@@ -1,0 +1,43 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.hero-section {
+    background: url('../images/nathan-dumlao-6VhPY27jdps-unsplash.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+.navbar {
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background: #4B382A;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+}

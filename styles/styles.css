@@ -23,11 +23,7 @@ body {
 }
 
 footer {
-<<<<<<< HEAD
     background: #4B382A !important;
-=======
-    background: #4B382A;
->>>>>>> ba253916182d830f0f6eaf82628c71cc1a5c6f95
     color: #fff;
     padding: 1rem 0;
 }
@@ -45,7 +41,6 @@ footer {
         text-align: center;
     }
 }
-<<<<<<< HEAD
 #popup {
     position: fixed;
     bottom: 20px;
@@ -75,5 +70,3 @@ footer {
     transform: translateY(0);
     opacity: 1;
 }
-=======
->>>>>>> ba253916182d830f0f6eaf82628c71cc1a5c6f95

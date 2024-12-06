@@ -1,7 +1,3 @@
-<?php 
-include("../backend/MenuCard.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,41 +42,65 @@ include("../backend/MenuCard.php");
         <div class="container">
             <h2 class="text-center mb-4">Our Menu</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <?php
-                foreach ($menuItems as $menuItem) {
-                    echo $menuItem->generateCardHTML();
-                }
-                ?>
+                <div class="col">
+                    <div class="card">
+                        <img src="../images/xyzcharlize-nMaynn82WZ0-unsplash (1).jpg" class="card-img-top" alt="Coffee">
+                        <div class="card-body">
+                            <h5 class="card-title">Cappuccino</h5>
+                            <p class="card-text">A perfect blend of espresso and steamed milk.</p>
+                            <p><strong>$5.00</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="../images/douglas-lopez-OADLv4BPWUg-unsplash.jpg" class="card-img-top" alt="Dessert">
+                        <div class="card-body">
+                            <h5 class="card-title">Chocolate Cake</h5>
+                            <p class="card-text">A rich, indulgent slice of chocolate heaven.</p>
+                            <p><strong>$3.50</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="../images/bakd-raw-by-karolin-baitinger-XKqIOpMMTOQ-unsplash.jpg" class="card-img-top" alt="Smoothie">
+                        <div class="card-body">
+                            <h5 class="card-title">Strawberry Smoothie</h5>
+                            <p class="card-text">A refreshing smoothie made with fresh strawberries.</p>
+                            <p><strong>$4.00</strong></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="reservation" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-4">Reserve a Table</h2>
+        <div class="container">~`
+            <h2 class="text-center mb-4">Reserve a Table</h2>
 
-        <form id="reservation-form">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="mb-3">
-                <label for="date" class="form-label">Reservation Date</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-            <div class="mb-3">
-                <label for="time" class="form-label">Reservation Time</label>
-                <input type="time" class="form-control" id="time" name="time" required>
-            </div>
-            <div class="mb-3">
-                <label for="guests" class="form-label">Number of Guests</label>
-                <input type="number" class="form-control" id="guests" name="guests" min="1" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Reserve Now</button>
-        </form>
-    </div>
-</section>
-
+            <form action="../backend/reservation.php" method="get">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Reservation Date</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <div class="mb-3">
+                    <label for="time" class="form-label">Reservation Time</label>
+                    <input type="time" class="form-control" id="time" name="time" required>
+                </div>
+                <div class="mb-3">
+                    <label for="guests" class="form-label">Number of Guests</label>
+                    <input type="number" class="form-control" id="guests" name="guests" min="1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Reserve Now</button>
+            </form>
+        </div>
+    </section>
 
     <section id="offers" class="py-5">
         <div class="container">
@@ -116,41 +136,44 @@ include("../backend/MenuCard.php");
             </div>
         </div>
     </section>
-    
 
-    <footer id="contact" class="py-5 text-white">
+    <footer id="contact" class="py-5 bg-dark text-white">
         <div class="container text-center">
             <h2>Contact Us</h2>
             <p>Email: info@cafebliss.com | Phone: (123) 456-7890</p>
         </div>
     </footer>
-
     <div id="popup" class="alert alert-success position-fixed bottom-0 end-0 m-3" style="display: none;">
         <span id="popup-message"></span>
     </div>
 
     <script>
     $(document).ready(function () {
+        // Check for a message in the URL query string
         const urlParams = new URLSearchParams(window.location.search);
         const message = urlParams.get('message');
         if (message) {
+            // Display the popup with the message
             $('#popup-message').text(message);
             $('#popup').fadeIn('slow', function () {
+                // Hide the popup after 3 seconds
                 setTimeout(function () {
                     $('#popup').fadeOut('slow');
                 }, 3000);
             });
 
+            // Remove the message from the URL without reloading
             const newURL = window.location.href.split('?')[0];
             history.replaceState({}, document.title, newURL);
         }
     });
-    </script>
-    
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</script>
 </body>
 
 </html>
-
-

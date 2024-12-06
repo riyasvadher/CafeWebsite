@@ -1,5 +1,5 @@
 <?php 
-include("../backend/MenuCard.php");
+    include "../backend/MenuCard.php"
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ include("../backend/MenuCard.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Café Bliss</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
@@ -46,11 +46,14 @@ include("../backend/MenuCard.php");
         <div class="container">
             <h2 class="text-center mb-4">Our Menu</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <?php
-                foreach ($menuItems as $menuItem) {
-                    echo $menuItem->generateCardHTML();
-                }
-                ?>
+            <?php
+                
+                    foreach ($menuItems as $menuItem) {
+                        echo $menuItem->generateCardHTML();
+                    }
+                 ?>
+                
+               
             </div>
         </div>
     </section>
@@ -115,7 +118,6 @@ include("../backend/MenuCard.php");
             </div>
         </div>
     </section>
-    
 
     <footer id="contact" class="py-5 text-white">
         <div class="container text-center">
@@ -123,31 +125,58 @@ include("../backend/MenuCard.php");
             <p>Email: info@cafebliss.com | Phone: (123) 456-7890</p>
         </div>
     </footer>
+    <!-- Add a container for the success/failure message -->
+<div id="popup-message" class="popup-message" style="display:none;">
+    <div id="popup-content" class="popup-content"></div>
+</div>
 
-    <div id="popup" class="alert alert-success position-fixed bottom-0 end-0 m-3" style="display: none;">
-        <span id="popup-message"></span>
-    </div>
-
-    <script>
-    $(document).ready(function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const message = urlParams.get('message');
-        if (message) {
-            $('#popup-message').text(message);
-            $('#popup').fadeIn('slow', function () {
-                setTimeout(function () {
-                    $('#popup').fadeOut('slow');
-                }, 3000);
-            });
-
-            const newURL = window.location.href.split('?')[0];
-            history.replaceState({}, document.title, newURL);
-        }
-    });
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- adding script for the animation -->
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // Function to handle the reservation form submission
+    $(document).ready(function() {
+        $('form').on('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            var formData = $(this).serialize(); // Serialize form data
+
+            $.ajax({
+                url: '../backend/reservation.php', // PHP script to handle the reservation
+                type: 'GET', // Using GET for simplicity, you can switch to POST if needed
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    // Show the success/error message with animation
+                    if (response.status === 'success') {
+                        $('#popup-content').text(response.message);
+                        $('#popup-message').removeClass('error').addClass('success');
+                    } else {
+                        $('#popup-content').text(response.message);
+                        $('#popup-message').removeClass('success').addClass('error');
+                    }
+
+                    // Display the popup and animate it
+                    $('#popup-message').fadeIn(500).delay(3000).fadeOut(500);
+                },
+                error: function() {
+                    $('#popup-content').text('There was an error with your reservation. Please try again.');
+                    $('#popup-message').removeClass('success').addClass('error');
+                    $('#popup-message').fadeIn(500).delay(3000).fadeOut(500);
+                }
+            });
+        });
+    });
+</script>
+
+
 </body>
 
 </html>
+
+
 

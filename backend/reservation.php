@@ -11,12 +11,14 @@ $stmt = $con->prepare($query);
 $stmt->bind_param("sssi", $name, $date, $time, $guests);
 
 if ($stmt->execute()) {
-    // Redirect to index with a success message
-    header("Location: ../frontend/index.php?message=" . urlencode("Reservation successfully saved!"));
-    exit();
+    $response = ["status" => "success", "message" => "Your reservation was successful!"];
 } else {
-    // Redirect to index with an error message
-    header("Location: ../frontend/index.php?message=" . urlencode("Error: " . $stmt->error));
-    exit();
+    $response = ["status" => "error", "message" => "Sorry, there was an error with your reservation. Please try again."];
 }
+
+$stmt->close();
+$con->close();
+
+// Return the response as JSON
+echo json_encode($response);
 ?>

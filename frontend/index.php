@@ -56,30 +56,31 @@ include("../backend/MenuCard.php");
     </section>
 
     <section id="reservation" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-4">Reserve a Table</h2>
+    <div class="container">
+        <h2 class="text-center mb-4">Reserve a Table</h2>
 
-            <form action="../backend/reservation.php" method="get">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="date" class="form-label">Reservation Date</label>
-                    <input type="date" class="form-control" id="date" name="date" required>
-                </div>
-                <div class="mb-3">
-                    <label for="time" class="form-label">Reservation Time</label>
-                    <input type="time" class="form-control" id="time" name="time" required>
-                </div>
-                <div class="mb-3">
-                    <label for="guests" class="form-label">Number of Guests</label>
-                    <input type="number" class="form-control" id="guests" name="guests" min="1" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Reserve Now</button>
-            </form>
-        </div>
-    </section>
+        <form id="reservation-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Reservation Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Reservation Time</label>
+                <input type="time" class="form-control" id="time" name="time" required>
+            </div>
+            <div class="mb-3">
+                <label for="guests" class="form-label">Number of Guests</label>
+                <input type="number" class="form-control" id="guests" name="guests" min="1" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Reserve Now</button>
+        </form>
+    </div>
+</section>
+
 
     <section id="offers" class="py-5">
         <div class="container">
@@ -145,6 +146,7 @@ include("../backend/MenuCard.php");
         }
     });
     </script>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -150,5 +150,3 @@ include("../backend/MenuCard.php");
 </body>
 
 </html>
-
-

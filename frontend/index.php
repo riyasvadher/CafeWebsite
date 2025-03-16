@@ -47,6 +47,8 @@ include "../backend/MenuCard.php"
             <h2 class="text-center mb-4">Our Menu</h2>
             <div class="menu-grid">
                 <?php
+
+                //Fetching the Card From Card Class
                 foreach ($menuItems as $menuItem) {
                     echo $menuItem->generateCardHTML();
                 }

@@ -1,4 +1,5 @@
 <?php
+//Using the OOPs
 class MenuCard {
     public $title;
     public $description;
